@@ -48,8 +48,8 @@ php artisan db:seed --class=UserSeeder
 
 ## user login details
 
-email:test@example.com
-password:password
+- Email: test@example.com  
+- Password: password
 
 ## Success Responses
 
