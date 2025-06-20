@@ -46,6 +46,11 @@ php artisan migrate
 php artisan db:seed --class=UserSeeder
 ```
 
+## user login details
+
+email:test@example.com
+password:password
+
 ## Success Responses
 
 ### 1. GET — for login =>  http://localhost:8000/api/login
