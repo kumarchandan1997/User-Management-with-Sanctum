@@ -46,89 +46,66 @@ php artisan migrate
 php artisan db:seed --class=UserSeeder
 ```
 
-### 1. api response
+## Success Responses
 
+### 1. GET — for login =>  http://localhost:8000/api/login
 
-🔐 Authentication API
-POST /api/login
-Sample Request:
+```http
+HTTP/1.1 200
+Content-Type: application/json
 
-json
-Copy
-Edit
 {
-  "email": "test@example.com",
-  "password": "password"
-}
-Sample Response:
-
-json
-Copy
-Edit
-{
-  "status_code": 200,
-  "message": "Login successful.",
-  "data": {
-    "token": "9|3Fml5icBkLyVQT9f2rprNV9AOzsGKqjiKevNsxmpc92410c5",
-    "user": {
-      "id": 2,
-      "name": "home_page",
-      "email": "test@example.com"
+    "status_code": 200,
+    "message": "Login successful.",
+    "data": {
+        "token": "9|3Fml5icBkLyVQT9f2rprNV9AOzsGKqjiKevNsxmpc92410c5",
+        "user": {
+            "id": 2,
+            "name": "home_page",
+            "email": "test@example.com"
+        }
     }
-  }
 }
-Use the token from response as Bearer Token for further requests.
+```
 
-📄 Get User Profile by ID
-GET /api/users/{user_id}
-Headers:
+### 1. POST — user details =>  http://localhost:8000/api/users/3
 
-css
-Copy
-Edit
-Authorization: Bearer {token}
-Sample Request:
+```http
+HTTP/1.1 200
+Content-Type: application/json
 
-bash
-Copy
-Edit
-GET http://localhost:8000/api/users/3
-Sample Response:
-
-json
-Copy
-Edit
 {
-  "status_code": 200,
-  "message": "User details",
-  "data": {
-    "user_name": "john_doe",
-    "mobile": "john@example.com",
-    "dob": "1985-08-21",
-    "gender": "Male",
-    "Address": [
-      {
-        "address_type": "home",
-        "address1": {
-          "door/street": "2nd Street, Green Valley",
-          "landmark": "Near Park",
-          "city": "Hyderabad",
-          "state": "Telangana",
-          "country": "India"
-        },
-        "primary": "Yes"
-      },
-      {
-        "address_type": "Office",
-        "address2": {
-          "door/street": "IT Park Rd, Cyber Towers",
-          "landmark": "Opposite Main Gate",
-          "city": "Hyderabad",
-          "state": "Telangana",
-          "country": "India"
-        },
-        "primary": "No"
-      }
-    ]
-  }
+    "status_code": 200,
+    "message": "User details",
+    "data": {
+        "user_name": "john_doe",
+        "mobile": "john@example.com",
+        "dob": "1985-08-21",
+        "gender": "Male",
+        "Address": [
+            {
+                "address_type": "home",
+                "address1": {
+                    "door/street": "2nd Street, Green Valley",
+                    "landmark": "Near Park",
+                    "city": "Hyderabad",
+                    "state": "Telangana",
+                    "country": "India"
+                },
+                "primary": "Yes"
+            },
+            {
+                "address_type": "Office",
+                "address2": {
+                    "door/street": "IT Park Rd, Cyber Towers",
+                    "landmark": "Opposite Main Gate",
+                    "city": "Hyderabad",
+                    "state": "Telangana",
+                    "country": "India"
+                },
+                "primary": "No"
+            }
+        ]
+    }
 }
+```
